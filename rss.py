@@ -1,5 +1,6 @@
 import os
 import sys
+from pytz import utc
 import feedparser
 from sql import db
 from time import sleep, time
