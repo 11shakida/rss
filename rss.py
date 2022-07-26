@@ -55,14 +55,14 @@ def create_feed_checker(feed_url):
                 msg = f"<b>Title:</b> {entry.title}\n\n"
                 if entry.tags[0].term:
                     msg += f"<b>Category:</b> {entry.tags[0].term}"
-                    msg += f" | <b>Torrent Site:</b> EZTV\n"
+                    msg += f"  |  <b>Torrent Site:</b> EZTV\n\n"
                 else:
-                    msg += f"<b>Torrent Site:</b> EZTV\n"
-                msg += f"<b>Size:</b> {humanbytes(int(entry.links[1].length))}\n"
+                    msg += f"<b>Torrent Site:</b> EZTV\n\n"
+                msg += f"<b>Size:</b> {humanbytes(int(entry.links[1].length))}\n\n"
                 if entry.torrent_seeds != 0:
                     msg += f"<b>Seeds:</b> {entry.torrent_seeds}"
                     if entry.torrent_peers != 0:
-                        msg += f" | <b>Peers:</b> {entry.torrent_peers}"
+                        msg += f"  |  <b>Peers:</b> {entry.torrent_peers}"
                     msg += f"\n\n"
                 elif entry.torrent_peers != 0:
                     msg += f"<b>Peers:</b> {entry.torrent_peers}\n\n"
@@ -71,7 +71,7 @@ def create_feed_checker(feed_url):
                 if entry.torrent_magneturi:
                     msg += f"<b>Magnet Link:</b> <code>{entry.torrent_magneturi}</code>\n\n"
                 msg += f"<b>Published On:</b> {entry.published}\n"
-                msg += f"@ShakidaUpdates | @ShakidaRssFeed"
+                msg += f"<b>Powered by:</b> @ShakidaUpdates  |  @ShakidaRssFeed"
             else:
                 msg = f"{entry}"
             try:
