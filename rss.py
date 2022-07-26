@@ -50,7 +50,7 @@ def create_feed_checker(feed_url):
     def check_feed():
         FEED = feedparser.parse(feed_url)
         entry = FEED.entries[0]
-        if entry.title_detail.base != db.get_link(feed_url).link:
+        if entry.id != db.get_link(feed_url).link:
             if "eztv.re" in entry.title_detail.base:
                 msg = f"<b>Title:</b> {entry.title}\n\n"
                 if entry.tags[0].term:
