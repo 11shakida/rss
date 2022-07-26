@@ -54,18 +54,24 @@ def create_feed_checker(feed_url):
             if "eztv.re" in entry.title_detail.base:
                 msg = f"<b>Title:</b> {entry.title}\n\n"
                 if entry.tags[0].term:
-                    msg += f"<b>Category:</b> {entry.tags[0].term}\n"
-                msg += f"<b>Torrent Site:</b> EZTV\n"
+                    msg += f"<b>Category:</b> {entry.tags[0].term}"
+                    msg += f" | <b>Torrent Site:</b> EZTV\n"
+                else:
+                    msg += f"<b>Torrent Site:</b> EZTV\n"
                 msg += f"<b>Size:</b> {humanbytes(int(entry.links[1].length))}\n"
-                if entry.torrent_seeds:
-                    msg += f"<b>Seeds:</b> {entry.torrent_seeds}\n"
-                if entry.torrent_peers:
-                    msg += f"<b>Peers:</b> {entry.torrent_peers}\n"
+                if entry.torrent_seeds != 0:
+                    msg += f"<b>Seeds:</b> {entry.torrent_seeds}"
+                    if entry.torrent_peers != 0:
+                        msg += f" | <b>Peers:</b> {entry.torrent_peers}"
+                    msg += f"\n\n"
+                elif entry.torrent_peers != 0:
+                    msg += f"<b>Peers:</b> {entry.torrent_peers}\n\n"
                 if entry.links[1].href:
-                    msg += f"<b>Torrent Link:</b> {entry.links[1].href}\n\n"
+                    msg += f"<b>Torrent Link:</b> <code>{entry.links[1].href}</code>\n\n"
                 if entry.torrent_magneturi:
                     msg += f"<b>Magnet Link:</b> <code>{entry.torrent_magneturi}</code>\n\n"
-                msg += f"<b>Published On:</b> {entry.published}"
+                msg += f"<b>Published On:</b> {entry.published}\n"
+                msg += f"@ShakidaUpdates | @ShakidaRssFeed"
             else:
                 msg = f"{entry}"
             try:
