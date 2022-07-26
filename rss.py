@@ -57,10 +57,10 @@ def create_feed_checker(feed_url):
                     msg += f"<b>Category:</b> {entry.tags[0].term}\n"
                 msg += f"<b>Torrent Site:</b> EZTV\n"
                 msg += f"<b>Size:</b> {humanbytes(int(entry.links[1].length))}\n"
-                if entry.link.torrent_seeds:
-                    msg += f"<b>Seeds:</b> {entry.link.torrent_seeds}\n"
-                if entry.link.torrent_peers:
-                    msg += f"<b>Peers:</b> {entry.link.torrent_peers}\n"
+            #    if entry.link.torrent_seeds:
+            #        msg += f"<b>Seeds:</b> {entry.link.torrent_seeds}\n"
+            #    if entry.link.torrent_peers:
+             #       msg += f"<b>Peers:</b> {entry.link.torrent_peers}\n"
                 if entry.links[1].href:
                     msg += f"<b>Torrent Link:</b> {entry.links[1].href}\n\n"
                 if entry.link.torrent_magneturi:
